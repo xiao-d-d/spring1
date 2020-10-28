@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util
+       https://www.springframework.org/schema/util/spring-util.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd">
+    <bean id="student" class="com.spring.mode.bean.Student" autowire="byType"/>
+    <bean id="user" class="com.spring.mode.bean.User"
+          init-method="init" destroy-method="destroy" scope="singleton" lazy-init="true">
+        <property name="username" value="zs"/>
+        <property name="password" value="12345"/>
+        <property name="list" ref="list">
+       <!--     <list>
+                <value>1</value>
+                <value>2</value>
+                <value>3</value>
+            </list>-->
+        </property>
+        <property name="addres" ref="addres"/>
+        <property name="map" >
+            <map>
+                <entry key="zs" value="china"></entry>
+                <entry key="ww" value="english"></entry>
+            </map>
+        </property>
+
+    </bean>
+
+    <p:list id="list">
+        <value>111</value>
+        <value>121</value>
+    </p:list>
+
+    <bean id="addres" class="com.spring.mode.bean.Addres">
+        <property name="detail" value="武汉市武昌区"/>
+    </bean>
+
+</beans>
